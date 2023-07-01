@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  bot:
+    build: .
+    volumes:
+      - .:/app:cached
+      - ~/.bash_history:/root/.bash_history
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    command: python main.py
+
+  db:
+    image: postgres:11.4
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
