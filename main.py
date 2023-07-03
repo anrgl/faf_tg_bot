@@ -12,6 +12,7 @@ def main():
     dp.add_handler(MessageHandler(Filters.command & Filters.regex('^/play'), play))
     dp.add_handler(MessageHandler(Filters.command & Filters.regex('^/notplay'), notplay))
     dp.add_handler(MessageHandler(Filters.command & Filters.regex('^/whoplaytoday'), whoplaytoday))
+    dp.add_handler(MessageHandler(Filters.command & Filters.regex(r'.*@'), unknown))
     dp.add_handler(MessageHandler(Filters.command, unknown))
     updater.start_polling()
     updater.idle()
