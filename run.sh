@@ -1,10 +1,10 @@
 #!/bin/bash
-chat_id=$(awk -F '=' 'function t(s){gsub(/[[:space:]]/,"",s);return s};/^CHAT_ID/{v=t($2)};END{printf "%s\n",v}' ./.env)
-api_id=$(awk -F '=' 'function t(s){gsub(/[[:space:]]/,"",s);return s};/^API/{v=t($2)};END{printf "%s\n",v}' ./.env)
-extract=$(cat ./get.md)
-extr_tbl=$(awk -F' ' '{print $1}' ./get.md)
+chat_id=$(awk -F '=' 'function t(s){gsub(/[[:space:]]/,"",s);return s};/^CHAT_ID/{v=t($2)};END{printf "%s\n",v}' /home/ubuntu/faf_tg_bot/.env)
+api_id=$(awk -F '=' 'function t(s){gsub(/[[:space:]]/,"",s);return s};/^API/{v=t($2)};END{printf "%s\n",v}' /home/ubuntu/faf_tg_bot/.env)
+extract=$(cat /home/ubuntu/faf_tg_bot/get.md)
+extr_tbl=$(awk -F' ' '{print $1}' /home/ubuntu/faf_tg_bot/get.md)
 
-if ! apt list --installed | grep postgresql &>/dev/null ; then sudo apt-get install postgresql postgresql-contrib ; fi
+if ! apt list --installed | grep postgresql &>/dev/null ; then sudo apt-get install postgresql postgresql-contrib -y ; fi
 
 cur_date=$(date +%Y-%m-%d)
 # create db
